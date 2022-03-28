@@ -2,8 +2,8 @@ from django.shortcuts import render, HttpResponse
 
 
 def index(request):
-    return HttpResponse('<h2>Welcome to My blog</h2>')
+    return render(request, 'blog/index.html')
 
 
 def about(request):
-    return HttpResponse('<h2>Blog About page </h2>')
+    return HttpResponse('<h2>Project_4_Blog About page </h2>')
