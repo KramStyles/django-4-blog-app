@@ -56,7 +56,7 @@ sample = [
 
 
 def index(request):
-    return render(request, 'blog/index.html')
+    return render(request, 'blog/index.html', {'posts': sample})
 
 
 def about(request):
