@@ -12,8 +12,6 @@ def register(request):
             messages.success(request, f"User: {username} registered")
             form.save()
             return redirect('blog_home')
-        else:
-            messages.warning(request, 'Wrong Form Info')
     else: form = RegisterForm()
     context = {
         'form': form,
