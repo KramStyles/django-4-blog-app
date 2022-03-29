@@ -70,7 +70,7 @@ def about(request):
     return render(request, 'blog/about.html', context)
 
 
-def blog(request):
+def post(request):
     context = {
         'title': 'blog'
     }
