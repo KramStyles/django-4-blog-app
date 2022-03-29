@@ -56,8 +56,22 @@ sample = [
 
 
 def index(request):
-    return render(request, 'blog/index.html', {'posts': sample})
+    context = {
+        'posts': sample,
+        'title': 'home'
+    }
+    return render(request, 'blog/index.html', context)
 
 
 def about(request):
-    return render(request, 'blog/post.html')
+    context = {
+        'title': 'about'
+    }
+    return render(request, 'blog/about.html', context)
+
+
+def blog(request):
+    context = {
+        'title': 'blog'
+    }
+    return render(request, 'blog/post.html', context)
