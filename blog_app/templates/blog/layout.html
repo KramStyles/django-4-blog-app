@@ -36,6 +36,11 @@
 </nav>
 {% block before_container %}{% endblock %}
 <div class="container">
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags }}">{{ msg }}</div>
+        {% endfor %}
+    {% endif %}
     {% block container %}{% endblock %}
 </div>
 <!-- Footer-->
