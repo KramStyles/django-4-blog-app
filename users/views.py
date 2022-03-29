@@ -12,9 +12,17 @@ def register(request):
             messages.success(request, f"User: {username} registered")
             form.save()
             return redirect('login')
-    else: form = RegisterForm()
+    else:
+        form = RegisterForm()
     context = {
         'form': form,
         'title': 'Register Users'
     }
     return render(request, 'users/register.html', context)
+
+
+def profile(request):
+    context = {
+        'title': "User Profile"
+    }
+    return render(request, 'users/profile.html', context)
