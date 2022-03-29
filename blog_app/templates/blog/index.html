@@ -1,0 +1,79 @@
+{% extends 'blog/layout.html' %}
+{% block before_container %}
+    <!-- Page header with logo and tagline-->
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+            </div>
+        </div>
+
+    </header>
+{% endblock %}
+{% block container %}
+    <!-- Page content-->
+    {% if blogs %}
+        <div class="row">
+            {% for blog in blogs %}
+                {% if forloop.counter < 3 %}
+                    {% if forloop.counter == 1 %}
+                        <div class="col-lg-8">
+                            <!-- Featured blog post-->
+                            <div class="card mb-4">
+                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."/></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">{{ blog.date_posted}}</div>
+                                    <h2 class="card-title">{{ blog.title|upper }}</h2>
+                                    <p class="card-text">{{ blog.body|truncatewords:25 }}</p>
+                                    <a class="btn btn-outline-dark" href="#!">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-lg-4">
+                            <!-- Featured blog post-->
+                            <div class="card mb-4">
+                                {% load static %}
+                                <a href="#!"><img class="card-img-top" src="{% static 'blog/images/django_logo.png' %}" alt="..."/></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">{{ blog.date_posted }}</div>
+                                    <h2 class="card-title">{{ blog.title|title }}</h2>
+                                    <a class="btn btn-outline-dark" href="#!">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-lg-4">
+                        <!-- Blog post-->
+                        <div class="card mb-4">
+                            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>
+                            <div class="card-body">
+                                <div class="small text-muted">{{ blog.date_posted|date:"F dS, Y" }}</div>
+                                <h2 class="card-title">{{ blog.title|title }}</h2>
+                                <p class="card-text">{{ blog.body|truncatewords:20 }}</p>
+                                <a class="btn btn-dark" href="#!">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <nav aria-label="Pagination">
+            <hr class="my-0"/>
+            <ul class="pagination justify-content-center my-4">
+                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+                <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+            </ul>
+        </nav>
+        {% else %}
+        <h1 class="text-center p-5 text-uppercase">No blog post available</h1>
+    {% endif %}
+{% endblock %}
+
