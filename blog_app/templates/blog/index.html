@@ -7,13 +7,14 @@
                 <h1 class="fw-bolder">Welcome to Blog Home!</h1>
             </div>
         </div>
+
     </header>
 {% endblock %}
 {% block container %}
     <!-- Page content-->
     {% if posts %}
         <div class="row">
-            {% for post in posts %}
+            {% for blog in blogs %}
                 {% if forloop.counter < 3 %}
                     {% if forloop.counter == 1 %}
                         <div class="col-lg-8">
@@ -21,9 +22,9 @@
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."/></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">February {{ post.id }}, 2022</div>
-                                    <h2 class="card-title">{{ post.title|upper }}</h2>
-                                    <p class="card-text">{{ post.body|truncatewords:25 }}</p>
+                                    <div class="small text-muted">{{ blog.date_posted }}</div>
+                                    <h2 class="card-title">{{ blog.title|upper }}</h2>
+                                    <p class="card-text">{{ blog.body|truncatewords:25 }}</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
@@ -35,8 +36,8 @@
                                 {% load static %}
                                 <a href="#!"><img class="card-img-top" src="{% static 'blog/images/django_logo.png' %}" alt="..."/></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">February {{ post.id }}, 2022</div>
-                                    <h2 class="card-title">{{ post.title|title }}</h2>
+                                    <div class="small text-muted">{{ blog.date_posted }}</div>
+                                    <h2 class="card-title">{{ blog.title|title }}</h2>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
@@ -48,9 +49,9 @@
                         <div class="card mb-4">
                             <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>
                             <div class="card-body">
-                                <div class="small text-muted">February {{ post.id }}, 2022</div>
-                                <h2 class="card-title">{{ post.title|title }}</h2>
-                                <p class="card-text">{{ post.body|truncatewords:20 }}</p>
+                                <div class="small text-muted">{{ blog.date_posted }}</div>
+                                <h2 class="card-title">{{ blog.title|title }}</h2>
+                                <p class="card-text">{{ blog.body|truncatewords:20 }}</p>
                                 <a class="btn btn-primary" href="#!">Read more →</a>
                             </div>
                         </div>
