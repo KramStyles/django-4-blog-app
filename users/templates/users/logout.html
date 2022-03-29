@@ -1,0 +1,14 @@
+{% extends 'blog/layout.html' %}
+{% block before_container %}
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder">You've been Logged out!</h1>
+                <small class="text-muted">Why don't you <b><a href="{% url 'login' %}" class="text-dark">Sign In</a></b> again?</small>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block container %}
+
+{% endblock %}

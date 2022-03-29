@@ -11,7 +11,7 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f"User: {username} registered")
             form.save()
-            return redirect('blog_home')
+            return redirect('login')
     else: form = RegisterForm()
     context = {
         'form': form,

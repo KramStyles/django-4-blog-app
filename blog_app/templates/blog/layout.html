@@ -35,7 +35,7 @@
     </div>
 </nav>
 {% block before_container %}{% endblock %}
-<div class="container">
+<div class="container" style="min-height: 50vh">
     {% if messages %}
         {% for msg in messages %}
             <div class="alert alert-{{ msg.tags }}">{{ msg }}</div>
