@@ -9,6 +9,10 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{ blog.title|upper }}</h1>
                             <div class="text-muted fst-italic mb-2">Posted on {{ blog.date_posted|date:'F d, Y' }} by <br><span class="font-monospace">{{ blog.author.username }}|{{ object.author.email }}</span></div>
+                            {% if user.username|striptags == blog.author|striptags %}
+                                <small ><a href="{% url 'post-update' blog.pk %}" class="text-primary text-decoration-none">Edit Post</a></small> |
+                                <small ><a href="{% url 'post-delete' blog.pk %}" class="text-danger text-decoration-none">Delete Post</a></small>
+                            {% endif %}
                         </header>
                         
                         <section class="mb-5">

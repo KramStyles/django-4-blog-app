@@ -1,6 +1,6 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Post
 
@@ -23,7 +23,17 @@ class PostDetail(DetailView):
     context_object_name = 'blog'
 
 
-class PostCreate(CreateView):
+class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    template_name = 'blog/post_delete.html'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author: return True
+        return False
+
+
+class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'body']
     template_name = 'blog/post_create.html'
@@ -31,6 +41,22 @@ class PostCreate(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class PostUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    fields = ['title', 'body']
+    template_name = 'blog/post_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    # Function working with Userpasses to prevent just anyone from updating post
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author: return True
+        return False
 
 
 def about(request):
