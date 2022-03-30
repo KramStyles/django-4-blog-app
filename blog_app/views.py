@@ -28,6 +28,10 @@ class PostCreate(CreateView):
     fields = ['title', 'body']
     template_name = 'blog/post_create.html'
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 def about(request):
     context = {
