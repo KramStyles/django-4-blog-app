@@ -9,5 +9,13 @@
     </header>
 {% endblock %}
 {% block container %}
-
+    <div class="card" style="width:400px">
+        <img class="card-img-top" src="{{ user.profile.image.url }}" alt="User Profile">
+        <div class="card-body">
+            <h4 class="card-title">{{ user.username }}</h4>
+            <p class="card-text">{{ user.email }}</p>
+            <p>Number of Post: is </p>
+            <a href="#" class="btn btn-primary">Edit Profile</a>
+        </div>
+    </div>
 {% endblock %}
