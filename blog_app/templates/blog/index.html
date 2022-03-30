@@ -12,9 +12,9 @@
 {% endblock %}
 {% block container %}
     <!-- Page content-->
-    {% if blogs %}
+    {% if blog_posts %}
         <div class="row">
-            {% for blog in blogs %}
+            {% for blog in blog_posts %}
                 {% if forloop.counter < 3 %}
                     {% if forloop.counter == 1 %}
                         <div class="col-lg-8">
@@ -25,7 +25,7 @@
                                     <div class="small text-muted">{{ blog.date_posted}}</div>
                                     <h2 class="card-title">{{ blog.title|upper }}</h2>
                                     <p class="card-text">{{ blog.body|truncatewords:25 }}</p>
-                                    <a class="btn btn-outline-dark" href="#!">Read more →</a>
+                                    <a class="btn btn-outline-dark" href="{% url 'post-detail' blog.id %}">Read more →</a>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                 <div class="card-body">
                                     <div class="small text-muted">{{ blog.date_posted }}</div>
                                     <h2 class="card-title">{{ blog.title|title }}</h2>
-                                    <a class="btn btn-outline-dark" href="#!">Read more →</a>
+                                    <a class="btn btn-outline-dark" href="{% url 'post-detail' blog.pk %}">Read more →</a>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 <div class="small text-muted">{{ blog.date_posted|date:"F dS, Y" }}</div>
                                 <h2 class="card-title">{{ blog.title|title }}</h2>
                                 <p class="card-text">{{ blog.body|truncatewords:20 }}</p>
-                                <a class="btn btn-dark" href="#!">Read more →</a>
+                                <a class="btn btn-dark" href="{% url 'post-detail' blog.pk %}">Read more →</a>
                             </div>
                         </div>
                     </div>
