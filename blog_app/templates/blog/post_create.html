@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'blog/layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block before_container %}
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder">Make New Post!</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block container %}
+    <form method='post'>
+        {% csrf_token %}
+        <div class='form-group'>
+            <div class="p-3 w-50 m-auto">
+                {{ form|crispy }}
+                <div class='form-group pt-3'>
+                    <button type="submit" class="btn btn-outline-dark w-100 mb-3">Create</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-top p-5">
+
+        </div>
+    </form>
+{% endblock %}

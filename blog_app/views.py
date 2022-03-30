@@ -1,16 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from .models import Post
-
-
-# def index(request):
-#     posts = Post.objects.all()
-#     context = {
-#         'title': 'home',
-#         'blogs': posts
-#     }
-#     return render(request, 'blog/index.html', context)
 
 
 class HomeView(ListView):
@@ -29,6 +21,12 @@ class PostDetail(DetailView):
     model = Post
     template_name = 'blog/post.html'
     context_object_name = 'blog'
+
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'body']
+    template_name = 'blog/post_create.html'
 
 
 def about(request):
