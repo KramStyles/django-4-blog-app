@@ -31,6 +31,7 @@
                 <li class="nav-item"><a class="nav-link {% if title == 'contact' %}active {% endif %}" href="#!">Contact</a></li>
             {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link {% if title == 'User Profile' %}active {% endif %}" href="{% url 'profile' %}">User Profile</a></li>
+                <li class="nav-item"><a class="nav-link {% if title == 'Create' %}active {% endif %}" href="{% url 'post-create' %}">Create Post</a></li>
                 <li class="nav-item"><a class="btn btn-danger" href="{% url 'logout' %}">Logout {{ user|title }}</a></li>
             {% else %}
                 <li class="nav-item mr-3"><a class="me-2 btn btn-light" href="{% url 'register' %}">Register</a></li>

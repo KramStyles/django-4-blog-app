@@ -26,6 +26,7 @@ class PostDetail(DetailView):
 class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     template_name = 'blog/post_delete.html'
+    success_url = '/'
 
     def test_func(self):
         post = self.get_object()
@@ -41,6 +42,11 @@ class PostCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['title'] = 'Create'
+        return context
 
 
 class PostUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
