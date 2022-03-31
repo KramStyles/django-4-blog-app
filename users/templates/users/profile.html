@@ -10,12 +10,31 @@
 {% endblock %}
 {% block container %}
     <div class="card" style="width:400px">
-        <img class="card-img-top" src="{{ user.profile.image.url }}" alt="User Profile">
+{#        <img class="card-img-top" src="{{ user.profile.image.url }}" alt="User Profile">#}
         <div class="card-body">
             <h4 class="card-title">{{ user.username }}</h4>
             <p class="card-text">{{ user.email }}</p>
-            <p>Number of Post: is </p>
+            <p>Number of Post: is {{ user.post_set.count }}</p>
             <a href="#" class="btn btn-primary">Edit Profile</a>
         </div>
     </div>
+    <ul class="list-group mt-3 w-50">
+        {% if user.post_set.all %}
+            {% for item in user.post_set.all %}
+                <li class="list-group-item list-group-item-action">{{ item.title }}
+                    <span class="float-end">
+                <a href="{% url 'post-detail' item.pk %}" class="btn btn-dark me-2">Visit</a>
+                <a href="{% url 'post-update' item.pk %}" class="btn btn-primary me-2">Edit</a>
+                <a href="{% url 'post-delete' item.pk %}" class="btn btn-danger me-2">Delete</a>
+            </span>
+                </li>
+            {% endfor %}
+            {% else %}
+            <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+            You don't have any post. Create a new one <span class="float-end"><a href="{% url 'post-create' %}" class="btn btn-dark">New Post</a></span>
+            </li>
+        {% endif %}
+    </ul>
+
+
 {% endblock %}
