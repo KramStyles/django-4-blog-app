@@ -1,11 +1,11 @@
-## Part II → Create a Blog Web Application
+## Part II → Creating a Blog Web Application
 
-In this part, you are to create a personal weblog Application.
+In this part, I've created a personal weblog Application.
 A blog (a shortened version of “weblog”) is an online journal or informational website where a writer or a group of writers share their views on an individual subject.
 
 ### Minimum Viable Product (MVC)
 
-The project should at least have the following features
+The project has the following features:
 
 1. Login
 2. Register
@@ -16,16 +16,16 @@ The project should at least have the following features
 
 ### User Story
 
-1. All Users should be able to read blogs.
-2. Registered Users should be able to create blog post.
+1. All Users can be read blogs.
+2. Registered Users can create blog post.
 3. Blog can only be updated and or deleted by the user who created it or Admin.
 
 ### Approach
 
-You are expected to complete this project using the following approach
+You can make use of this project by forking or downloading it. You can also clone it.
 
-- Create a personal GitHub repository for this application.
-- Make sure you write a proper and understandable readme describing what the application is all about and how the application can be run locally (Getting started).
-- Make sure you put both your frontend and backend skills into usage and build a unique, attractive and smashing web application that you will be proud of, after all, it’s your personal blog.
-- When you are done with your implementation add the GitHub link to `part 1` readme file.
-- [OPTIONAL] Host the web application on any hosting platform of your choice (Heroku, Pythonanywhere, Digital Ocean, AWS etc) and add the link to `part 1` readme file.
+- Ensure you have python in your system 
+- In your terminal after cloning or downloading the project, input and run this command `pip install -r requirements.txt`
+- After that, run `python manage.py runserver` or `python3 manage.py runserver`
+- Go to your browser and go to the url `http://localhost:5000`
+- The link to the hosted version would soon be made available. Thank you
